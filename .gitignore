@@ -4,3 +4,5 @@ result-scrape-lembaga-kementrian
 results-scrape-bumn
 output.*
 output.txt
+.venv
+.venv/*
