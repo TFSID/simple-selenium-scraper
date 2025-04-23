@@ -69,16 +69,7 @@ Line 383: #
 Line 389: http://www.kemenag.go.id
 Line 395: #
 Line 401: http://kemendesa.go.id/
-Line 407: #
-Line 409: \&quot;https://id.wikipedia.org/wiki/Tentara_Nasional_Indonesia\&quot;
-Line 409: \&quot;https://id.wikipedia.org/wiki/Kepolisian_Negara_Republik_Indonesia\&quot;
-Line 409: \&quot;https://id.wikipedia.org/wiki/Grasi\&quot;
-Line 409: \&quot;https://id.wikipedia.org/wiki/Amnesti\&quot;
-Line 409: \&quot;https://id.wikipedia.org/wiki/Abolisi\&quot;
-Line 409: \&quot;https://id.wikipedia.org/wiki/Rehabilitasi\&quot;
-Line 409: \&quot;https://id.wikipedia.org/wiki/Ekstradisi\&quot;
-Line 409: \&quot;https://id.wikipedia.org/wiki/Naturalisasi\&quot;
-Line 409: \&quot;https://id.wikipedia.org/wiki/Daftar_Sekretaris_Kabinet_Indonesia\&quot;
+
 Line 413: http://www.setneg.go.id
 Line 419: #
 Line 425: http://www.depkop.go.id/
