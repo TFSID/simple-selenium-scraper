@@ -1,30 +1,38 @@
 import os
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.firefox.service import Service
 import time
 
-# Set your Chrome user data path (adjust this!)
-# user_data_dir = r"C:\\Users\\Akasata\\AppData\\Local\\Google\\Chrome\\User Data"
-profile_dir = "chrome_profile"  # or "Profile 1", etc.
-profile_name = "Profile 1"  # or "Profile 1", etc.
+# Set your Firefox profile path (adjust this!)
+# On Windows: C:\\Users\\YourUsername\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\
+# On macOS: ~/Library/Application Support/Firefox/Profiles/
+# On Linux: ~/.mozilla/firefox/
+profile_path = r"C:\\Users\\Akasata\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\your-profile-name.default-release"
 
-profile_path = os.path.abspath(profile_dir)
-def create_driver(profile_dir=profile_path):
-
+def create_driver(profile_path=None):
     options = Options()
-    options.add_argument(f"--user-data-dir={profile_path}")
-    options.add_argument(f"--profile-directory={profile_name}")
-    options.add_argument("--disable-background-networking")
+    
+    # Set Firefox profile if provided
+    if profile_path and os.path.exists(profile_path):
+        options.add_argument(f"-profile")
+        options.add_argument(profile_path)
+        print(f"[INFO] Using Firefox profile at: {profile_path}")
+    else:
+        print("[INFO] Using default Firefox profile")
+    
+    # Firefox-specific options
     options.add_argument("--disable-notifications")
-    options.add_argument("--disable-default-apps")
-    options.add_argument("--no-default-browser-check")
-    options.add_argument("--disable-popup-blocking")
     options.add_argument("--start-maximized")
-
-    print(f"[INFO] Starting Chrome with profile at: {profile_path}")
-    driver = webdriver.Chrome(service=Service(), options=options)
+    
+    # Additional preferences
+    options.set_preference("dom.webnotifications.enabled", False)
+    options.set_preference("browser.download.folderList", 2)
+    options.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/pdf")
+    
+    print(f"[INFO] Starting Firefox...")
+    driver = webdriver.Firefox(service=Service(), options=options)
     return driver
 
 def repl(driver):
@@ -82,12 +90,12 @@ def repl(driver):
             print(f"[ERROR] {e}")
 
 def main():
-    print("🌐 Selenium CLI Interactive Browser")
+    print("🦊 Selenium CLI Interactive Browser (Firefox)")
     url = input("🔗 Enter the URL to visit (e.g., https://www.google.com): ").strip()
     if not url.startswith("http"):
         url = "https://" + url
 
-    driver = create_driver()
+    driver = create_driver(profile_path)
     driver.get(url)
     time.sleep(2)  # Wait for page load
 

@@ -6,3 +6,6 @@ output.*
 output.txt
 .venv
 .venv/*
+
+chrome_profile
+chrome_profile/*
