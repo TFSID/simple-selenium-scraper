@@ -9,9 +9,14 @@ import sys
 
 import argparse
 
+# # Set your Chrome user data path (adjust this!)
+# user_data_dir = r"C:\\Users\\LianLie 1\\AppData\\Local\\Google\\Chrome\\User Data"
+# profile_dir = "Profile 6"  # or "Profile 1", etc.
+
 # Set your Chrome user data path (adjust this!)
-user_data_dir = r"C:\\Users\\LianLie 1\\AppData\\Local\\Google\\Chrome\\User Data"
-profile_dir = "Profile 6"  # or "Profile 1", etc.
+user_data_dir = r"C:\\Users\\Akasata\\AppData\\Local\\BraveSoftware\\Brave-Browser\\User Data"
+profile_dir = "Profile 3"  # or "Profile 1", etc.
+
 
 # driver = webdriver.Chrome(options=chrome_options)
 def scrape_username_toko(keyword):
@@ -21,8 +26,10 @@ def scrape_username_toko(keyword):
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
     driver = uc.Chrome(options=chrome_options)
     wait = WebDriverWait(driver, 10)
-    driver.get(f"https://shopee.co.id/search_user?keyword={keyword}")  # This will carry your logged-in session
-
+    try:
+        driver.get(f"https://shopee.co.id/search_user?keyword={keyword}")  # This will carry your logged-in session
+    except Exception as e:
+        print(f"[ERROR] Failed to load the page: {e}")
     # Define XPath
     xpath1 = '//*[@id="main"]/div/div[2]/div/div/div/div/div/div[2]'
     xpath_loop = '//*[@id="main"]/div/div[2]/div/div/div/div/div/div[2]/div[{loop}]/a/div[2]'
