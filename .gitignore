@@ -6,6 +6,7 @@ output.*
 output.txt
 .venv
 .venv/*
-
+dock
+dock/*
 chrome_profile
 chrome_profile/*
