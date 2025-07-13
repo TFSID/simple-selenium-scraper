@@ -25,7 +25,6 @@ def links_scraper(target, output):
     
     url = target
     output_file = output
-    # domain = "parpol.ahu.go.id"
 
     try:
         driver.get(url)
